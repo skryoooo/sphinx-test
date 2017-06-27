@@ -9,15 +9,12 @@ dependencies:
     - pip install Sphinx commonmark recommonmark
 
 test:
-  pre:
-    - echo "-----start test-----"
   override:
     - echo "-----no test-----"
-  post:
-    - echo "-----end test-----"
 
 deployment:
   deploy:
     branch: master
     commands:
       - make html
+      - aws s3 sync build/html s3://path/to/document/ --delete
