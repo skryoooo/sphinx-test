@@ -1,0 +1,23 @@
+machine:
+  timezone:
+    Asia/Tokyo
+  python:
+    version: 3.5.2
+
+dependencies:
+  pre:
+    - pip install Sphinx commonmark recommonmark
+
+test:
+  pre:
+    - echo "-----start test-----"
+  override:
+    - echo "-----no test-----"
+  post:
+    - echo "-----end test-----"
+
+deployment:
+  deploy:
+    branch: master
+    commands:
+      - make html
