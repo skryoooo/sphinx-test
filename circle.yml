@@ -10,11 +10,10 @@ dependencies:
 
 test:
   override:
-    - echo "-----no test-----"
+    - make html
 
 deployment:
-  deploy:
+  master:
     branch: master
     commands:
-      - make html
       - aws s3 sync build/html s3://path/to/document/ --delete
